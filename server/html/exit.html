@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<p id="countdown">Завершение работы SQL через 10 секунд.</p>
+<head>
+</head>
+<body>
+<script>
+let time = 10;
+const timer = setInterval(() => {
+  const countdownElement = document.getElementById('countdown');
+  if(time > 0) {
+    countdownElement.textContent = `Завершение работы SQL через ${time--} секунд.`;
+  } else {
+    clearInterval(timer);
+    countdownElement.textContent = 'Работа программы завершена.';
+  }
+}, 1000);
+</script>
+</body>
+</html>

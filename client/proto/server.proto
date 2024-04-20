@@ -1,0 +1,35 @@
+syntax = "proto3"; // версия proto файлов
+package server; // название пакета
+option go_package = "server/proto";
+message getTask { //to server
+
+}
+message GetTaskResponse { //to client (worker)
+    string oper1 = 1;
+    string oper2 = 2;
+    string oper3 = 3;
+    string oper4 = 4;
+    string ID = 5;
+    string expression = 6;
+}
+message sendResult{ //to server
+    string ID = 1;
+    string Result = 2;
+}
+
+message sendResultResponse { //to client (workers)
+
+}
+message WorkerState { //to server
+     string status = 1; //0-free, 1 - busy
+}
+message WorkerStateResp { //to client (worker)
+
+}
+
+service WorkerService {
+	// методы, которые можно будет реализовать и использовать
+    rpc  GetTaskRPC (getTask) returns (GetTaskResponse);
+    rpc sendResultRPC (sendResult) returns (sendResultResponse);
+    rpc WorkerStateRPC (WorkerState) returns (WorkerStateResp);
+}
